@@ -1,0 +1,17 @@
+spring:
+  application:
+    name: "ofac api"
+  jpa:
+    hibernate:
+      ddl-auto: create
+    database-platform: org.hibernate.dialect.PostgreSQLDialect
+  datasource:
+    url: "jdbc:postgresql://localhost:5432/ofac"
+    username: "postgres"
+    password: "postgres"
+
+
+
+server:
+  port: 3000
+
