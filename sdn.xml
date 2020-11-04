@@ -9,9 +9,9 @@
     <uid>36</uid>
     <lastName>AEROCARIBBEAN AIRLINES</lastName>
     <sdnType>Entity</sdnType>
-    <programList>
+<!--     <programList>
       <program>CUBA</program>
-    </programList>
+    </programList> -->
     <akaList>
       <aka>
         <uid>12</uid>
