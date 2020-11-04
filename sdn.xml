@@ -30,4 +30,29 @@
  
   
   </sdnEntry>
+<sdnEntry>
+        <uid>173</uid>
+        <lastName>ANGLO-CARIBBEAN CO., LTD.</lastName>
+        <sdnType>Entity</sdnType>
+        <programList>
+            <program>CUBA</program>
+        </programList>
+        <akaList>
+            <aka>
+                <uid>57</uid>
+                <type>a.k.a.</type>
+                <category>strong</category>
+                <lastName>AVIA IMPORT</lastName>
+            </aka>
+        </akaList>
+        <addressList>
+            <address>
+                <uid>129</uid>
+                <address1>Ibex House, The Minories</address1>
+                <city>London</city>
+                <postalCode>EC3N 1DY</postalCode>
+                <country>United Kingdom</country>
+            </address>
+        </addressList>
+    </sdnEntry>
 </sdnList>
