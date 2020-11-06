@@ -2,8 +2,8 @@ package com.example.api.schedule;
 
 
 import com.example.api.model.Sdn;
-import com.example.api.service.SdnRepoService;
-import com.example.api.service.SdnService;
+import com.example.api.service.SdnEntryService;
+import com.example.api.service.SdnApiService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.scheduling.annotation.Scheduled;
 import org.springframework.stereotype.Component;
@@ -13,21 +13,21 @@ import java.io.IOException;
 @Component
 public class ScheduledTasks {
 
-    private SdnService sdnService;
-    private SdnRepoService sdnRepoService;
+    private SdnApiService sdnApiService;
+    private SdnEntryService sdnEntryService;
 
     public ScheduledTasks() {
     }
 
     @Autowired
-    public ScheduledTasks(SdnService sdnService, SdnRepoService sdnRepoService) {
-        this.sdnService = sdnService;
-        this.sdnRepoService = sdnRepoService;
+    public ScheduledTasks(SdnApiService sdnApiService, SdnEntryService sdnEntryService) {
+        this.sdnApiService = sdnApiService;
+        this.sdnEntryService = sdnEntryService;
     }
 
     @Scheduled(cron = "0 0 0 * * ?")
     public void fetchAt12AmEachDay() throws IOException {
-        Sdn data = sdnService.getData();
-        sdnRepoService.saveData(data.getSdnEntry());
+        Sdn data = sdnApiService.getData();
+        sdnEntryService.saveData(data.getSdnEntry());
     }
 }
