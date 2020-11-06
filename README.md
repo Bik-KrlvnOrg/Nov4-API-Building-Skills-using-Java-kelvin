@@ -16,3 +16,10 @@ Build an API with Spring Boot that fetches this XML list at 12AM daily-Save this
 Create an API endpoint to return a list of these individuals. This APIendpoint must be paginated i.e. 
 should accept skip and limit parametersused to query the database for a particular page and size.
 Notables:-Truncate postgres table whenever the list is updated daily. This is so that wecan always keep an updated version of the SDN list
+
+## Endpoints
+```console
+GET localhost:5750/test
+GET localhost:5750/sdn
+POST localhost:5750/sdn
+```
