@@ -26,6 +26,7 @@ dependencies {
     implementation 'com.squareup.retrofit2:converter-simplexml:2.3.0'
     implementation("com.squareup.okhttp3:logging-interceptor:4.9.0")
     compile group: 'org.springframework.batch', name: 'spring-batch-core', version: '4.3.0'
+    compile group: 'com.vladmihalcea', name: 'hibernate-types-43', version: '2.10.0'
 
     runtimeOnly(
             'org.glassfish.jaxb:jaxb-runtime'

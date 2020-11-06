@@ -4,12 +4,11 @@ import lombok.Data;
 import org.simpleframework.xml.Element;
 import org.simpleframework.xml.Root;
 
-import javax.persistence.Embeddable;
+import java.io.Serializable;
 
 @Root(name = "Address")
 @Data
-@Embeddable
-public class Address {
+public class Address implements Serializable {
     @Element
     private String uid;
 

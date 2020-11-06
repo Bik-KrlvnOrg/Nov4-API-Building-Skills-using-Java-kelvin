@@ -5,11 +5,11 @@ import org.simpleframework.xml.Element;
 import org.simpleframework.xml.Root;
 
 import javax.persistence.Embeddable;
+import java.io.Serializable;
 
 @Root(name = "aka")
 @Data
-@Embeddable
-public class Aka {
+public class Aka implements Serializable {
     @Element(required = false)
     private String uid;
 

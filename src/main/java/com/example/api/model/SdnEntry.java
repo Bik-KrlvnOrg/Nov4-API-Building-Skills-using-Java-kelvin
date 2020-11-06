@@ -1,19 +1,25 @@
 package com.example.api.model;
 
+import lombok.AllArgsConstructor;
 import lombok.Data;
+import lombok.EqualsAndHashCode;
+import lombok.NoArgsConstructor;
+import org.hibernate.annotations.Type;
 import org.simpleframework.xml.Element;
 import org.simpleframework.xml.ElementList;
 import org.simpleframework.xml.Root;
 
 import javax.persistence.*;
+import java.io.Serializable;
 import java.util.List;
 
-@Root(name = "sdnEntry")
+@EqualsAndHashCode(callSuper = true)
+@Root(name = "sdnEntry",strict = false)
 @Data
 @Entity
-public class SdnEntry {
-    @Id
-    @GeneratedValue
+@AllArgsConstructor
+@NoArgsConstructor
+public class SdnEntry extends EntityWithUUID implements Serializable {
     @Element(required = false)
     private String uid;
 
@@ -37,69 +43,57 @@ public class SdnEntry {
     @Element(required = false)
     private String remarks;
 
-    @Column(columnDefinition = "text")
     @Element(required = false)
-    @Embedded
+    @Type(type = "jsonb")
+    @Column(columnDefinition = "jsonb")
+    @Basic(fetch = FetchType.LAZY)
     private VesselInfo vesselInfo;
 
     @ElementList(name = "programList", required = false)
-    @CollectionTable
-    @ElementCollection
+    @Type(type = "jsonb")
+    @Column(columnDefinition = "jsonb")
+    @Basic(fetch = FetchType.LAZY)
     private List<Programs> programsList;
 
     @ElementList(name = "idList", required = false)
-    @CollectionTable
-    @ElementCollection
+    @Type(type = "jsonb")
+    @Column(columnDefinition = "jsonb")
+    @Basic(fetch = FetchType.LAZY)
     private List<CountryId> countryIdList;
 
     @ElementList(required = false)
-    @CollectionTable
-    @ElementCollection
+    @Type(type = "jsonb")
+    @Column(columnDefinition = "jsonb")
+    @Basic(fetch = FetchType.LAZY)
     private List<Nationality> nationalityList;
 
     @ElementList(required = false)
-    @CollectionTable
-    @ElementCollection
+    @Type(type = "jsonb")
+    @Column(columnDefinition = "jsonb")
+    @Basic(fetch = FetchType.LAZY)
     private List<Citizenship> citizenshipList;
 
     @ElementList(required = false)
-    @CollectionTable
-    @ElementCollection
+    @Type(type = "jsonb")
+    @Column(columnDefinition = "jsonb")
+    @Basic(fetch = FetchType.LAZY)
     private List<Aka> akaList;
 
     @ElementList(name = "dateOfBirthList", required = false)
-    @CollectionTable
-    @ElementCollection
+    @Type(type = "jsonb")
+    @Column(columnDefinition = "jsonb")
+    @Basic(fetch = FetchType.LAZY)
     private List<Dob> dobList;
 
     @ElementList(name = "placeOfBirthList", required = false)
-    @CollectionTable
-    @ElementCollection
+    @Type(type = "jsonb")
+    @Column(columnDefinition = "jsonb")
+    @Basic(fetch = FetchType.LAZY)
     private List<PlaceOfBirth> placeOfBirthList;
 
     @ElementList(required = false)
-    @CollectionTable
-    @ElementCollection
+    @Type(type = "jsonb")
+    @Column(columnDefinition = "jsonb")
+    @Basic(fetch = FetchType.LAZY)
     private List<Address> addressList;
-
-    @Override
-    public String toString() {
-        return "SdnEntry{" +
-                "uid='" + uid + '\'' +
-                ", title='" + title + '\'' +
-                ", firstName='" + firstName + '\'' +
-                ", lastName='" + lastName + '\'' +
-                ", sdnType='" + sdnType + '\'' +
-                ", remarks='" + remarks + '\'' +
-                ", vesselInfo=" + vesselInfo +
-                ", programsList=" + programsList +
-                ", countryIdList=" + countryIdList +
-                ", nationalityList=" + nationalityList +
-                ", citizenshipList=" + citizenshipList +
-                ", akaList=" + akaList +
-                ", dobList=" + dobList +
-                ", placeOfBirthList=" + placeOfBirthList +
-                ", addressList=" + addressList +
-                '}';
-    }
 }

@@ -5,11 +5,12 @@ import org.simpleframework.xml.Element;
 import org.simpleframework.xml.Root;
 
 import javax.persistence.*;
+import java.io.Serializable;
 
 @Root(name = "id")
 @Data
-@Embeddable
-public class CountryId {
+//@Embeddable
+public class CountryId implements Serializable {
     @Element(required = false)
     private String uid;
 

@@ -5,11 +5,12 @@ import org.simpleframework.xml.Element;
 import org.simpleframework.xml.Root;
 
 import javax.persistence.*;
+import java.io.Serializable;
 
 @Root(name = "vesselInfo")
 @Data
-@Embeddable
-public class VesselInfo {
+//@Embeddable
+public class VesselInfo  implements Serializable {
     @Column(columnDefinition = "text")
     @Element(required = false)
 

@@ -9,7 +9,7 @@ import javax.persistence.*;
 
 @Root(name = "publshInformation")
 @Data
-@Embeddable
+//@Embeddable
 public class PublishInformation {
 
     @Element(name = "Publish_Date", required = false)

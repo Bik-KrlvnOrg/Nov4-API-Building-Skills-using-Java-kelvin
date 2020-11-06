@@ -4,13 +4,12 @@ import lombok.Data;
 import org.simpleframework.xml.Element;
 import org.simpleframework.xml.Root;
 
-import javax.persistence.Embeddable;
 import javax.persistence.Id;
+import java.io.Serializable;
 
 @Root(name = "dateOfBirthItem")
 @Data
-@Embeddable
-public class Dob {
+public class Dob implements Serializable {
     @Id
     @Element(required = false)
     private String uid;
