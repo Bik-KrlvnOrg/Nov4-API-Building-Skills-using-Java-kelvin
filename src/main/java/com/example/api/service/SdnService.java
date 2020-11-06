@@ -17,12 +17,12 @@ import java.util.concurrent.TimeUnit;
 
 @Service
 public class SdnService extends APIConfiguration {
-    private static final String BASE_URL = "https://raw.githubusercontent.com/Bik-KrlvnOrg/Nov3-API-Building-Skills-using-Java-kelvin/main/";
+    private static final String BASE_URL = "https://raw.githubusercontent.com/Bik-KrlvnOrg/Nov4-API-Building-Skills-using-Java-kelvin/main/";
     private ApiService service;
 
     public SdnService() {
         HttpLoggingInterceptor logging = new HttpLoggingInterceptor(message -> System.out.println("OkHttp"));
-        int timeOut = 5;
+        int timeOut = 30;
         OkHttpClient okhttp = new OkHttpClient.Builder()
                 .addInterceptor(logging)
                 .connectTimeout(timeOut, TimeUnit.SECONDS)
