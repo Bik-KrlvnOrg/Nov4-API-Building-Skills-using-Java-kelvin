@@ -1,0 +1,31 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  labels:
+    app: sdn-service
+  name: sdn-service
+spec:
+  replicas: 2
+  selector:
+    matchLabels:
+      app: sdn-service
+  template:
+    metadata:
+      labels:
+        app: sdn-service
+    spec:
+      containers:
+        - name: sdn-service
+          image: "bikkrl/sdn-repo:api-svc"
+          env:
+            - name: SPRING_DATASOURCE_URL
+              value: "jdbc:postgresql://api-db/sdn?createDatabaseIfNotExist=true"
+            - name: SPRING_DATASOURCE_USERNAME
+              value: "postgres"
+            - name: SPRING_DATASOURCE_PASSWORD
+                value: "postgres"
+            - name: PORT
+              value: "8088"
+          ports:
+            - name: http
+              containerPort: 8088

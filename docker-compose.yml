@@ -1,0 +1,33 @@
+version: '3'
+
+services:
+  api-svc:
+    container_name: "java_api_svc"
+    build:
+      context: .
+    networks:
+      - api
+    depends_on:
+      - api-db
+    environment:
+      SPRING_DATASOURCE_URL: "jdbc:postgresql://api-db/sdn?createDatabaseIfNotExist=true"
+      SPRING_DATASOURCE_USERNAME: "postgres"
+      SPRING_DATASOURCE_PASSWORD: "postgres"
+    ports:
+      - "3000:5750"
+
+  api-db:
+    container_name: "postgres_sdn"
+    image: postgres:9.6
+    ports:
+      - "5432:5432"
+    networks:
+      - api
+    environment:
+      POSTGRES_USER: "postgres"
+      POSTGRES_PASSWORD: "postgres"
+      POSTGRES_DB: "sdn"
+
+
+networks:
+  api:
