@@ -20,6 +20,5 @@ Notables:-Truncate postgres table whenever the list is updated daily. This is so
 ## Endpoints
 ```console
 GET localhost:5750/test
-GET localhost:5750/sdn
-POST localhost:5750/sdn
+GET localhost:5750/sdn filter or pagination will work here
 ```
