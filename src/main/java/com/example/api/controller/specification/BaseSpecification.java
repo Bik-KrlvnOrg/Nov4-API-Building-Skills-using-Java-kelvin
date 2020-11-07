@@ -28,10 +28,8 @@ public abstract class BaseSpecification<T, U> {
             if (value == null) {
                 return null;
             }
-            return cb.equal(
-                    cb.function("jsonb_extract_path_text",
-                            String.class, root.<String>get(attribute), cb.literal(key)), value
-            );
+            return cb.function("jsonb_extract_path_text",
+                    String.class, root.<String>get(attribute), cb.literal(key)).in(value);
         };
     }
 }
