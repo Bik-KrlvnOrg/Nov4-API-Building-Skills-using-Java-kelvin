@@ -52,48 +52,48 @@ public class SdnEntry extends EntityWithUUID implements Serializable {
     @ElementList(name = "programList", required = false)
     @Type(type = "jsonb")
     @Column(columnDefinition = "jsonb")
-    @Basic(fetch = FetchType.LAZY)
+    @Basic(fetch = FetchType.EAGER)
     private List<Programs> programsList;
 
     @ElementList(name = "idList", required = false)
     @Type(type = "jsonb")
     @Column(columnDefinition = "jsonb")
-    @Basic(fetch = FetchType.LAZY)
+    @Basic(fetch = FetchType.EAGER)
     private List<CountryId> countryIdList;
 
     @ElementList(required = false)
     @Type(type = "jsonb")
     @Column(columnDefinition = "jsonb")
-    @Basic(fetch = FetchType.LAZY)
+    @Basic(fetch = FetchType.EAGER)
     private List<Nationality> nationalityList;
 
     @ElementList(required = false)
     @Type(type = "jsonb")
     @Column(columnDefinition = "jsonb")
-    @Basic(fetch = FetchType.LAZY)
+    @Basic(fetch = FetchType.EAGER)
     private List<Citizenship> citizenshipList;
 
     @ElementList(required = false)
     @Type(type = "jsonb")
     @Column(columnDefinition = "jsonb")
-    @Basic(fetch = FetchType.LAZY)
+    @Basic(fetch = FetchType.EAGER)
     private List<Aka> akaList;
 
     @ElementList(name = "dateOfBirthList", required = false)
     @Type(type = "jsonb")
     @Column(columnDefinition = "jsonb")
-    @Basic(fetch = FetchType.LAZY)
+    @Basic(fetch = FetchType.EAGER)
     private List<Dob> dobList;
 
     @ElementList(name = "placeOfBirthList", required = false)
     @Type(type = "jsonb")
     @Column(columnDefinition = "jsonb")
-    @Basic(fetch = FetchType.LAZY)
+    @Basic(fetch = FetchType.EAGER)
     private List<PlaceOfBirth> placeOfBirthList;
 
     @ElementList(required = false)
     @Type(type = "jsonb")
     @Column(columnDefinition = "jsonb")
-    @Basic(fetch = FetchType.LAZY)
+    @Basic(fetch = FetchType.EAGER)
     private List<Address> addressList;
 }

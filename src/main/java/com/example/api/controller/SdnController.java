@@ -1,52 +1,44 @@
 package com.example.api.controller;
 
+import com.example.api.controller.dto.SdnEntryRequest;
 import com.example.api.model.Sdn;
 import com.example.api.model.SdnEntry;
-import com.example.api.service.SdnEntrySpecification;
-import com.example.api.service.SdnRepoService;
-import com.example.api.service.SdnService;
+import com.example.api.controller.specification.SdnEntrySpecification;
+import com.example.api.service.SdnEntryService;
+import com.example.api.service.SdnApiService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Pageable;
 import org.springframework.data.jpa.domain.Specification;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.ModelAttribute;
-import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RestController;
 
 import java.io.IOException;
 
 @RestController
 public class SdnController {
-    private SdnRepoService sdnRepoService;
-    private SdnService sdnService;
+    private SdnEntryService sdnEntryService;
+    private SdnApiService sdnApiService;
 
     public SdnController() {
     }
 
     @Autowired
-    public SdnController(SdnRepoService sdnRepoService, SdnService sdnService) {
-        this.sdnRepoService = sdnRepoService;
-        this.sdnService = sdnService;
+    public SdnController(SdnEntryService sdnEntryService, SdnApiService sdnApiService) {
+        this.sdnEntryService = sdnEntryService;
+        this.sdnApiService = sdnApiService;
     }
-
 
     @GetMapping("/sdn")
-    public ResponseEntity<?> getCached(Pageable pageable) {
-        return new ResponseEntity<>(sdnRepoService.getSdn(pageable), HttpStatus.OK);
-    }
-
-    @PostMapping("/sdn")
-    public ResponseEntity<?> getCachedFilter(@ModelAttribute("data") SdnEntry query, Pageable pageable) {
-        Specification<SdnEntry> spec = new SdnEntrySpecification(query);
-        return new ResponseEntity<>(sdnRepoService.getSdn(spec, pageable), HttpStatus.OK);
+    public ResponseEntity<?> getCachedFilter(SdnEntryRequest request, Pageable pageable) {
+        return new ResponseEntity<>(sdnEntryService.getSdn(request, pageable), HttpStatus.OK);
     }
 
     @GetMapping("/test")
     public void runTest() throws IOException {
-        Sdn data = sdnService.getData();
+        Sdn data = sdnApiService.getData();
         System.out.println("\n \n \t data: " + data);
-        sdnRepoService.saveData(data.getSdnEntry());
+        sdnEntryService.saveData(data.getSdnEntry());
     }
 }
